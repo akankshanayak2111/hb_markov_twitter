@@ -45,7 +45,7 @@ def make_text(chains):
 
     key = choice(chains.keys())
     words = [key[0], key[1]]
-    while key in chains:
+    while key in chains and len(str(words)) <= 140:
         # Keep looping until we have a key that isn't in the chains
         # (which would mean it was the end of our original text)
         #
@@ -55,9 +55,8 @@ def make_text(chains):
         word = choice(chains[key])
         words.append(word)
         key = (key[1], word)
-
-    return " ".join(words)
-
+        link = " ".join(words)
+    return link
 
 def tweet(chains):
     # Use Python os.environ to get at environmental variables
@@ -74,6 +73,10 @@ text = open_and_read_file(filenames)
 
 # Get a Markov chain
 chains = make_chains(text)
+
+random_text = make_text(chains)
+
+print random_text
 
 # Your task is to write a new function tweet, that will take chains as input
 # tweet(chains)
