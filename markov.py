@@ -62,7 +62,15 @@ def tweet(chains):
     # Use Python os.environ to get at environmental variables
     # Note: you must run `source secrets.sh` before running this file
     # to make sure these environmental variables are set.
-    pass
+    quit_command = raw_input("Enter to tweet again [q to quit] >" )
+    if quit_command == "q" or "quit":
+        break
+    else:
+# add the twitter api method (from the packet)
+# continue on like a regular tweet from the shell
+# then use the twitter api for posting a status
+# put the markov function in the post status function   
+
 
 # Get the filenames from the user through a command line prompt, ex:
 # python markov.py green-eggs.txt shakespeare.txt
@@ -75,6 +83,8 @@ text = open_and_read_file(filenames)
 chains = make_chains(text)
 
 random_text = make_text(chains)
+
+tweet(random_text)
 
 print random_text
 
